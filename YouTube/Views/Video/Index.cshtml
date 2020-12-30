@@ -1,0 +1,19 @@
+﻿@model YouTube.Models.VideoViewModels.VideoViewModel
+@{ 
+    Layout = "_HomeLayout";
+    ViewData["VideoFile"] = $"../../UserFiles/{Model.Video.Creator.Email}/Videos/{Model.Video.Id}/{Model.Video.FileName}";
+    ViewData["HeaderTitle"] = Model.Video.Title;
+    ViewData["AuthorName"] = $"{Model.Video.Creator.FirstName} {Model.Video.Creator.LastName}";
+    ViewData["PostDate"] = Model.Video.UpdatedOn.ToString("MMMM d, yyyy");
+    ViewData["AuthorId"] = Model.Video.Creator.Id;
+}
+
+<article>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-md-10 mx-auto text-dark">
+                @Html.Raw(Model.Video.Content)
+            </div>
+        </div>
+    </div>
+</article>

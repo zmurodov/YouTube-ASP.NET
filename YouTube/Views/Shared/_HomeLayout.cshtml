@@ -1,0 +1,66 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - YouTube</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+</head>
+<body>
+
+    @await Component.InvokeAsync("Header")
+
+    <header class="masthead" >
+        @if (ViewData["HeaderImage"] != null)
+        {
+            <div class="overlay" style="background-image: url('@ViewData["HeaderImage"]'); height:350px;"></div>
+        }
+        <div class="container">
+            @if (ViewData["VideoFile"] != null)
+            {
+                <div class="row">
+                    <div class="col">
+                        <video class="video-fluid z-depth-1" style="width:100%; height:auto; overflow:hidden;" loop controls>
+                            <source src="@ViewData["VideoFile"]" type="video/mp4" />
+                        </video>
+                    </div>
+                </div>
+            }
+            <div class="row">
+                <div class="col-lg-8 col-md-10 mx-auto">
+                    <div class="post-heading">
+                        <h1 class="text-dark">@ViewData["HeaderTitle"]</h1>
+                        @if (ViewData["SubHeader"] is null)
+                        {
+
+                            <span class="meta">
+                                Posted By
+                                <a asp-controller="Home" asp-action="Author" asp-route-authorId="@ViewData["AuthorId"]">@ViewData["AuthorName"]</a>
+                                on @ViewData["PostDate"]
+                            </span>
+                        }
+                        else
+                        {
+                            <span class="subheading text-dark">@ViewData["SubHeader"]</span>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!--<div class="container">-->     @*  *@
+        <!--<main role="main" class="pb-3">-->
+            @RenderBody()
+        @*</main>*@
+    @*</div>*@
+
+    @await Component.InvokeAsync("Footer")
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @RenderSection("Scripts", required: false)
+</body>
+</html>

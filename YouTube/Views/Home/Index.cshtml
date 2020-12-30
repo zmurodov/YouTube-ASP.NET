@@ -1,0 +1,36 @@
+﻿@model YouTube.Models.HomeViewModel.IndexViewModel
+@using PagedList.Core.Mvc
+
+<div class="container">
+    <form asp-controller="Home" asp-action="Index" class="d-none d-md-block form-inline ml-auto mrr-0 mr-md-3 my-2 my-md-0">
+        <div class="input-group mb-3">
+            <input asp-for="SearchString" type="text" class="form-control" placeholder="Search videos for..." />
+            <div class="input-group-append">
+                <button class="btn btn-outline-secondary" style="padding:0 10px 0 10px">Search</button>
+            </div>
+        </div>
+    </form>
+
+    <div class="row align-content-center">
+        @foreach (var video in Model.Videos)
+        {
+            <div class="col-lg-4 col-md-3 mb-4">
+                <div class="card border-0 shadow">
+                    <video class="video-fluid z-depth-1" style="width:100%; height:auto;" loop controls muted>
+                        <source src="~/UserFiles/@video.Creator.Email/Videos/@video.Id/@video.FileName" type="video/mp4" />
+                    </video>
+                    <div class="card-body">
+                        <div class="row text-center" style="margin: 0px auto 10px 0px">
+                            <h5 class="card-title text-center w-100"><a asp-controller="Video" asp-action="Index" asp-route-id="@video.Id">@video.Title</a></h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+    <div list="@Model.Videos" count="20">
+        <pager class="pager-container" list="@Model.Videos"
+               options="@PagedListRenderOptions.Bootstrap4PageNumbersPlusPrevAndNext"
+               asp-action="Index" asp-controller="Home" asp-route-query="@Model.SearchString" />
+    </div>
+</div> 
