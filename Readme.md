@@ -44,6 +44,10 @@ View video page
 ![alt text](screenshots/doc_2023-07-25_17-18-28.png "Home page")
 Home page
 
+Demo video:
+https://github.com/zmurodov/YouTube-ASP.NET/assets/37672731/6fd3f358-c71d-461e-8013-0c023136120f
+
+
 ## Installation
 
 To set up the project locally, follow these steps:
