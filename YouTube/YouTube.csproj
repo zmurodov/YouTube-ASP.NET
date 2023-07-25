@@ -56,4 +56,13 @@
     <None Include="wwwroot\lib\jquery\dist\jquery.min.map" />
   </ItemGroup>
 
+  <ItemGroup>
+    <_ContentIncludedByDefault Remove="wwwroot\UserFiles\zufar98murodov@gmail.com\HeaderImage.jpg" />
+    <_ContentIncludedByDefault Remove="wwwroot\UserFiles\zufar98murodov@gmail.com\Videos\1\2021-02-27 14-44-41.mkv" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="wwwroot\UserFiles\" />
+  </ItemGroup>
+
 </Project>
